@@ -1,34 +1,56 @@
 document.querySelector('.signbtn').addEventListener('click',()=>{
-	const sname = document.getElementById('inputName').value;
-	const semail = document.getElementById('signmail').value;
-	const spassword = document.getElementById('signpassword').value;
-	console.log("name = ",sname);
-	console.log("email = ",semail);
-	console.log("password = ",spassword);
+	const name = document.getElementById('inputName').value;
+	const email = document.getElementById('signmail').value;
+	const password = document.getElementById('signpassword').value;
+	console.log("name = ",name);
+	console.log("email = ",email);
+	console.log("password = ",password);
 
-	fetch('http://localhost:3000/register',{
+	fetch('http://localhost:5000/register',{
 		method:'post',
 		headers:{
 			 'Content-Type': 'application/json'
 		},
-		body: JSON.stringify({ sname, semail, spassword })
+		body: JSON.stringify({ name, email, password })
 	})
-	.then(res => res.text())
+	.then(res => res.json())
 	.then(data => alert(data));
 });
 
 document.querySelector('.loginbtn').addEventListener('click',()=>{
-	const lmail = document.getElementById('loginmail').value;
-	const lpassword = document.getElementById('loginpassword').value;
-	fetch('http://localhost:3000/login',{
+	const email = document.getElementById('loginmail').value;
+	const password = document.getElementById('loginpassword').value;
+	fetch('http://localhost:5000/login',{
 		method: 'post',
 		headers :{
 			'Content-Type': 'application/json'
 	   },
-	   body : JSON.stringify({lmail, lpassword})
+	   body : JSON.stringify({email, password})
 	})
-	.then(res => res.text())
-	.then(data => alert(data));
+	.then(res => {
+		console.log("Status kod:", res.status);
+        return res.json();
+	})
+	.then(data => {
+		console.log("Server yanıtı:", data);
+        
+        if (data.message) {
+            alert(data.message);
+        } else if (data.token) {
+            // Başarılı giriş
+            alert("Giriş başarılı!");
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            // Kullanıcıyı ana sayfaya yönlendir
+            window.location.href = 'index.html';
+        } else {
+            alert("Bilinmeyen bir hata oluştu");
+        }
+	})
+	.catch(err => {
+        console.error("Fetch hatası:", err);
+        alert("Bağlantı hatası oluştu");
+    });
 });
 
 //document.getElementById('bookbtn').addEventListener('click',()=>{
@@ -39,7 +61,7 @@ document.querySelector('.loginbtn').addEventListener('click',()=>{
 //	console.log(bookservice);
 //	console.log(bookdate);
 //	console.log(booktime);
-//	fetch(('http://localhost:3000/book'),{
+//	fetch(('http://localhost:5000/book'),{
 //		method : 'post',
 //		headers:{'Content-Type': 'application/json'},
 //		body : JSON.stringify({bookservice, bookdate, booktime})
