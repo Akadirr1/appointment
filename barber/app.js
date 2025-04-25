@@ -1,3 +1,23 @@
+function checkAuthStatus(){
+	const token = localStorage.getItem('token');
+	const user = JSON.parse(localStorage.getItem('user'));
+
+	const currentPage = window.location.pathname.split('/').pop();
+
+	if(token){
+		if (currentPage === 'login.html' || currentPage === '' || currentPage === '/') {
+            window.location.href = 'index.html';
+        }
+		//else {
+		//	// Token yoksa ve korumalı sayfadaysa, login sayfasına yönlendir
+		//	if (currentPage !== 'login.html' && currentPage !== '') {
+		//		window.location.href = 'index.html';
+		//	}
+		//}
+	}
+}
+document.addEventListener('DOMContentLoaded', checkAuthStatus);
+
 document.querySelector('.signbtn').addEventListener('click',()=>{
 	const name = document.getElementById('inputName').value;
 	const email = document.getElementById('signmail').value;

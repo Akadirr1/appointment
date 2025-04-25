@@ -3,14 +3,13 @@ body{
 	padding: 0;
 }
 .container{
-	width: 100%;
+	width: 50%;
 	height: 600px;
 	border:  1px solid gray;
 	border-radius:10px;
 	display: flex;
 	justify-content: center;
 	text-align: center;
-	flex: 3;
 	margin-top: 100px;
 }
 .login{
