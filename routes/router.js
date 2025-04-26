@@ -51,11 +51,7 @@ router.post('/login',async (req,res)=>{
 
 	}
 })
-router.get('/profile',authenticateUser,async (req,res)=>{
-	const user = req.user;
-	console.log(`hoşgeldiniz ${user.name}`)
-	res.json({ message: `Hoşgeldiniz ${user.name}`, user });
-})
+
 
 
 module.exports = router;
