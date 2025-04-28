@@ -1,23 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="file.svg" type="image/x-icon">
-	<!--<link rel="stylesheet" href="style.css">-->
-	<title>R & R BARBER</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="file.svg" type="image/x-icon"> <link rel="stylesheet" href="appointment.css"> <title>Randevu Al - R & R BARBER</title>
 </head>
+
 <body>
-	
-	<div class="user-controls" style="margin: 20px; text-align: right;">
-		<span id="userName" style="margin-right: 15px; font-weight: bold;"></span>
-		<button id="logoutBtn" class="btn btn-danger">Çıkış Yap</button>
-	  </div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-	<script src="../app.js"></script>
-</body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <h1>R & R BARBER Randevu Sistemi</h1>
+            <div id="user-info" style="font-size: 0.9em;">
+                 Hoşgeldin, <span id="user-name-placeholder">[Kullanıcı Adı]</span>!
+                 (<button id="logout-button" class="logout-button">Çıkış Yap</button>)
+            </div>
+        </header>	
+
+        <main class="main-content">
+
+            <section class="appointment-flow">
+                <h2>Yeni Randevu Oluştur</h2>
+
+                <div class="step-container barber-selection-container">
+                    <label for="barber-select">1. Berber Seçiniz:</label>
+                    <select name="barbers" id="barber-select">
+                        <option value="" selected>-- Lütfen Berber Seçiniz --</option>
+                        <option value="berber_ali">Ali</option>
+                        <option value="berber_veli">Veli</option>
+                        <option value="berber_can">Can</option>
+                    </select>
+                </div>
+
+                <div class="step-container calendar-wrapper" id="calendar-wrapper" style="display: none;">
+                    <label>2. Tarih Seçiniz:</label>
+                    <div class="calendar-container" id="calendar-section">
+                        <div class="calendar-header">
+                            <button id="prev-month" class="nav-button">&lt;</button>
+                            <h3 id="month-year"></h3>
+                            <button id="next-month" class="nav-button">&gt;</button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div>PZT</div>
+                            <div>SAL</div>
+                            <div>ÇAR</div>
+                            <div>PER</div>
+                            <div>CUM</div>
+                            <div>CMT</div>
+                            <div>PAZ</div>
+                        </div>
+                        <div class="calendar-days" id="calendar-days">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="step-container appointment-times-container" id="appointment-times-container" style="display: none;">
+                    <h3 id="appointment-date-title">3. Saat Seçiniz</h3>
+                    <div class="appointment-list" id="appointment-list">
+                        </div>
+                </div>
+
+            </section> 
+			<aside class="active-appointments">
+                <h2>Aktif Randevularınız</h2>
+                <div id="active-appointments-list">
+                    <p id="no-active-appointments" class="muted-text" style="display: none;">Aktif randevunuz bulunmamaktadır.</p>
+                     </div>
+            </aside> 
+		</main> 
+		</div> 
+			<script src="appointment.js"></script> 
+			<script src="../app.js"></script> 
+		</body>
+
 </html>

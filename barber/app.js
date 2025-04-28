@@ -64,7 +64,7 @@ else if(currentPage==='appointment.html')
             userNameElement.textContent = `Hoş geldiniz, ${user.name}`;
         }
     }
-	const logoutBtn = document.getElementById('logoutBtn');
+	const logoutBtn = document.getElementById('logout-button');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function() {
             // Local storage'dan token ve kullanıcı bilgilerini temizle
@@ -84,22 +84,6 @@ else if(currentPage==='appointment.html')
         });
 	}
 }
-//document.getElementById('bookbtn').addEventListener('click',()=>{
-//	const selectElement = document.querySelector('.bookservice');
-//	const bookservice = selectElement.options[selectElement.selectedIndex].text;
-//	const bookdate = document.getElementById('bookdate').value;
-//	const booktime = document.getElementById('booktime').value;
-//	console.log(bookservice);
-//	console.log(bookdate);
-//	console.log(booktime);
-//	fetch(('http://localhost:5000/book'),{
-//		method : 'post',
-//		headers:{'Content-Type': 'application/json'},
-//		body : JSON.stringify({bookservice, bookdate, booktime})
-//	})
-//	.then(res => res.text())
-//	.then(data => alert(data));
-//});
 function checkAuthStatus(){
 	const token= localStorage.getItem('token');
 

@@ -43,7 +43,7 @@ router.post('/login',async (req,res)=>{
 			return res.status(400);
 		}
 		console.log("giris basarili");
-		const token = jwt.sign({userId: user._id}, 'your-secret-key',{ expiresIn: '1h' });
+		const token = jwt.sign({userId: user._id}, 'your-secret-key',{ expiresIn: '5m' });
 		res.json({token,user:{id: user._id,name: user.name,email: user.email}});
 	} catch (err) {
 		console.error(err);

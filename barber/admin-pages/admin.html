@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="file.svg" type="image/x-icon">
+    <link rel="stylesheet" href="admin.css">
+    <title>Müsaitlik Yönetimi - R & R BARBER</title>
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <header class="page-header">
+            <h1>Berber Müsaitlik Yönetimi</h1>
+            <div id="user-info" style="font-size: 0.9em;">
+                 Hoşgeldin, <span id="barber-name-placeholder">[Berber Adı]</span>!
+                 (<button id="logout-button" class="logout-button">Çıkış Yap</button>)
+            </div>
+        </header>
+
+        <main class="admin-content">
+
+            <section class="availability-form-section">
+                <h2>Haftalık Çalışma Saatleri</h2>
+                <p class="muted-text">Lütfen standart haftalık çalışma saatlerinizi ve tatil günlerinizi ayarlayın.</p>
+
+                <form id="availability-form">
+                    <div class="weekly-schedule">
+                        <div class="day-schedule" data-day="monday">
+                            <label class="day-label">Pazartesi</label>
+                            <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="monday-working" name="monday-working" class="working-checkbox">
+                                     <label for="monday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="monday-start">Başlangıç:</label>
+                                    <input type="time" id="monday-start" name="monday-start" class="time-input" disabled>
+                                    <label for="monday-end">Bitiş:</label>
+                                    <input type="time" id="monday-end" name="monday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="tuesday">
+                            <label class="day-label">Salı</label>
+                             <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="tuesday-working" name="tuesday-working" class="working-checkbox">
+                                     <label for="tuesday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="tuesday-start">Başlangıç:</label>
+                                    <input type="time" id="tuesday-start" name="tuesday-start" class="time-input" disabled>
+                                    <label for="tuesday-end">Bitiş:</label>
+                                    <input type="time" id="tuesday-end" name="tuesday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="wednesday">
+                            <label class="day-label">Çarşamba</label>
+                            <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="wednesday-working" name="wednesday-working" class="working-checkbox">
+                                     <label for="wednesday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="wednesday-start">Başlangıç:</label>
+                                    <input type="time" id="wednesday-start" name="wednesday-start" class="time-input" disabled>
+                                    <label for="wednesday-end">Bitiş:</label>
+                                    <input type="time" id="wednesday-end" name="wednesday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="thursday">
+                            <label class="day-label">Perşembe</label>
+                            <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="thursday-working" name="thursday-working" class="working-checkbox">
+                                     <label for="thursday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="thursday-start">Başlangıç:</label>
+                                    <input type="time" id="thursday-start" name="thursday-start" class="time-input" disabled>
+                                    <label for="thursday-end">Bitiş:</label>
+                                    <input type="time" id="thursday-end" name="thursday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="friday">
+                            <label class="day-label">Cuma</label>
+                           <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="friday-working" name="friday-working" class="working-checkbox">
+                                     <label for="friday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="friday-start">Başlangıç:</label>
+                                    <input type="time" id="friday-start" name="friday-start" class="time-input" disabled>
+                                    <label for="friday-end">Bitiş:</label>
+                                    <input type="time" id="friday-end" name="friday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="saturday">
+                            <label class="day-label">Cumartesi</label>
+                            <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="saturday-working" name="saturday-working" class="working-checkbox">
+                                     <label for="saturday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="saturday-start">Başlangıç:</label>
+                                    <input type="time" id="saturday-start" name="saturday-start" class="time-input" disabled>
+                                    <label for="saturday-end">Bitiş:</label>
+                                    <input type="time" id="saturday-end" name="saturday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="day-schedule" data-day="sunday">
+                            <label class="day-label">Pazar</label>
+                             <div class="day-controls">
+                                <div class="status-toggle">
+                                     <input type="checkbox" id="sunday-working" name="sunday-working" class="working-checkbox">
+                                     <label for="sunday-working">Çalışıyor</label>
+                                </div>
+                                <div class="time-inputs">
+                                    <label for="sunday-start">Başlangıç:</label>
+                                    <input type="time" id="sunday-start" name="sunday-start" class="time-input" disabled>
+                                    <label for="sunday-end">Bitiş:</label>
+                                    <input type="time" id="sunday-end" name="sunday-end" class="time-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                         <button type="submit" class="save-button">Değişiklikleri Kaydet</button>
+                         <span id="save-status" class="save-status"></span> </div>
+                </form>
+            </section>
+
+        </main> </div> <script src="admin.js"></script> </body>
+
+</html>

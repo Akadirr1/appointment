@@ -1,0 +1,272 @@
+/* appointment.css'deki temel stiller (body, page-container vb.) geçerli varsayılır */
+/* Veya buraya kopyalanabilir */
+
+.admin-content {
+    /* Admin içeriği için özel ayarlar gerekirse */
+    max-width: 800px; /* Formun çok geniş olmasını engelle */
+    margin: 20px auto; /* Ortala */
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.availability-form-section h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+.availability-form-section .muted-text {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+
+.weekly-schedule {
+    /* Haftalık program grid'i */
+}
+
+.day-schedule {
+    display: flex;
+    align-items: center; /* Dikeyde ortala */
+    justify-content: space-between; /* Etiket ve kontrolleri ayır */
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+.day-schedule:last-child {
+    border-bottom: none;
+}
+
+.day-label {
+    font-weight: bold;
+    color: #444;
+    flex-basis: 100px; /* Etiket için sabit genişlik */
+}
+
+.day-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Kontroller arası boşluk */
+    flex-grow: 1; /* Kalan alanı kapla */
+    flex-wrap: wrap; /* Küçük ekranda alt alta düşebilir */
+}
+
+.status-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Checkbox ve label arası */
+}
+.status-toggle label {
+    cursor: pointer;
+    user-select: none; /* Yazı seçilmesini engelle */
+    color: #555;
+}
+.working-checkbox {
+     width: 18px;
+     height: 18px;
+     cursor: pointer;
+}
+
+
+.time-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Label ve inputlar arası */
+    flex-wrap: wrap; /* Küçük ekranda alt alta */
+}
+.time-inputs label {
+    font-size: 0.9em;
+    color: #666;
+}
+.time-input {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.time-input:disabled { /* Pasif input stili */
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.save-button { /* Kaydet butonu stili */
+    background-color: #d4af37; /* Ana tema rengi */
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+.save-button:hover {
+    background-color: #b8860b;
+}
+.save-button:disabled { /* Kaydederken pasif */
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.save-status { /* Kaydetme durumu mesajı */
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 0.9em;
+    color: green; /* Başarı rengi */
+}
+.save-status.error {
+    color: #e74c3c; /* Hata rengi */
+}
+
+
+/* Küçük ekranlar için ek ayarlar */
+@media (max-width: 600px) {
+    .day-schedule {
+        flex-direction: column; /* Etiket ve kontroller alt alta */
+        align-items: flex-start; /* Sola yasla */
+        gap: 10px;
+    }
+    .day-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 15px;
+    }
+     .time-inputs {
+        width: 100%; /* Inputları tam genişliğe yay */
+        justify-content: space-between; /* Başlangıç ve bitişi ayır */
+     }
+     .time-inputs label {
+         flex-basis: auto; /* Otomatik genişlik */
+     }
+     .time-input {
+         flex-grow: 1; /* Inputlar alanı doldursun */
+         max-width: 100px; /* Çok büyümesin */
+     }
+
+}
+/* Mobil Görünüm İyileştirmeleri (Örn: 768px altı tablet/telefon) */
+@media (max-width: 768px) {
+
+    .admin-content {
+        padding: 20px; /* Mobilde iç boşluğu azalt */
+    }
+
+    .day-schedule {
+        flex-direction: column; /* Ana yapıyı dikey yap */
+        align-items: flex-start; /* İçerikleri sola yasla */
+        gap: 10px; /* Etiket ve kontroller arası boşluk */
+        padding: 12px 0; /* Dikey boşluğu biraz azalt */
+    }
+
+    .day-label {
+        flex-basis: auto; /* Sabit genişliği kaldır */
+        margin-bottom: 5px; /* Kontrollerle arasına boşluk */
+        font-size: 1.1em; /* Etiketi biraz büyüt */
+    }
+
+    .day-controls {
+        flex-direction: column; /* Kontrolleri dikey yap */
+        align-items: stretch; /* Kontrolleri tam genişliğe yay */
+        width: 100%;       /* Tam genişlik kullan */
+        gap: 12px;         /* Kontrol grupları arası boşluk */
+    }
+
+    .status-toggle {
+        /* Checkbox ve label yan yana kalabilir, yeterince yer var */
+        /* Özel bir ayara gerek yok gibi */
+        padding: 5px 0; /* Biraz dikey boşluk */
+    }
+
+    .time-inputs {
+        display: grid; /* Flex yerine Grid kullanalım */
+        grid-template-columns: auto 1fr; /* Etiket | Input */
+        gap: 8px 10px; /* Dikey | Yatay boşluk */
+        align-items: center; /* Dikeyde ortala */
+        width: 100%; /* Tam genişlik */
+    }
+
+    .time-inputs label {
+        font-size: 0.85em; /* Etiket fontunu küçült */
+        text-align: right; /* Etiketleri sağa yasla (isteğe bağlı) */
+        padding-right: 5px;
+    }
+
+    .time-input {
+        width: 100%; /* Inputlar grid alanını doldursun */
+        padding: 6px 8px; /* Input iç boşluğu */
+        font-size: 0.9em;
+        box-sizing: border-box; /* Padding/border genişliği etkilemesin */
+    }
+
+    /* Başlangıç ve Bitiş etiket/input çiftlerini ayırt etmek için */
+    /* CSS Grid'de 4 eleman var: label1, input1, label2, input2 */
+    /* Start Label */
+    .time-inputs label[for$="-start"] { /* ID'si "-start" ile biten label */
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    /* Start Input */
+    .time-inputs input[id$="-start"] { /* ID'si "-start" ile biten input */
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    /* End Label */
+     .time-inputs label[for$="-end"] { /* ID'si "-end" ile biten label */
+        grid-column: 1 / 2;
+        grid-row: 2 / 3; /* İkinci satır */
+    }
+    /* End Input */
+    .time-inputs input[id$="-end"] { /* ID'si "-end" ile biten input */
+        grid-column: 2 / 3;
+        grid-row: 2 / 3; /* İkinci satır */
+    }
+
+    .form-actions {
+        margin-top: 25px;
+        padding-top: 15px;
+    }
+
+    .save-button {
+        width: 100%; /* Buton tam genişlik */
+        padding: 12px; /* Daha büyük tıklama alanı */
+    }
+    .save-status {
+         display: block; /* Mesajı butonun altına al */
+         margin-left: 0;
+         margin-top: 10px; /* Butonla arasına boşluk */
+         text-align: center;
+    }
+}
+
+/* Çok küçük ekranlar için ek ayar (opsiyonel) */
+@media (max-width: 400px) {
+    .admin-content {
+        padding: 15px;
+    }
+    .time-inputs {
+         grid-template-columns: 1fr; /* Etiket ve inputu alt alta */
+         gap: 5px 0;
+    }
+     .time-inputs label {
+         text-align: left; /* Etiketleri sola yasla */
+         grid-column: 1 / 2; /* Tek sütun */
+     }
+     /* Inputlar zaten tek sütunda olacak */
+     .time-inputs label[for$="-start"] { grid-row: 1 / 2; }
+     .time-inputs input[id$="-start"] { grid-row: 2 / 3; }
+     .time-inputs label[for$="-end"] { grid-row: 3 / 4; }
+     .time-inputs input[id$="-end"] { grid-row: 4 / 5; }
+}

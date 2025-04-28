@@ -1,0 +1,360 @@
+/* Genel Sayfa Stilleri */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background-color: #fdfbf7; /* Ana arka plan rengi (bej/krem) */
+    color: #333;
+    line-height: 1.6;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Stili */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.page-header h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+.logout-button { /* Basit çıkış butonu stili */
+    background: none;
+    border: 1px solid #ccc;
+    color: #555;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.logout-button:hover {
+    background-color: #eee;
+}
+
+
+/* Ana İçerik Yerleşimi (Flexbox) */
+.main-content {
+    display: flex;
+    flex-wrap: wrap; /* Mobilde alt alta düşmesi için */
+    gap: 30px; /* Bölümler arası boşluk */
+}
+
+.appointment-flow {
+    flex: 2; /* Randevu akışı daha geniş (örn: 2/3 oranında) */
+    min-width: 300px; /* Minimum genişlik */
+    background-color: #fff; /* İçerik alanı beyaz */
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.active-appointments {
+    flex: 1; /* Aktif randevular daha dar (örn: 1/3 oranında) */
+    min-width: 250px;
+    background-color: #fff;
+    padding: 25px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Adım Konteynerleri (Berber, Takvim, Saatler) */
+.step-container {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #eee; /* Adımlar arasına çizgi */
+}
+.step-container:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.step-container label { /* Adım başlıkları */
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Berber Seçimi Stili */
+.barber-selection-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fff;
+}
+
+/* Takvim Stilleri (Önceki örnekteki gibi) */
+.calendar-wrapper {
+    /* Gerekirse ek stil */
+}
+
+.calendar-container {
+    border: 1px solid #eee;
+    background-color: #fff; /* Takvim içi beyaz */
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #333; /* Koyu başlık */
+    color: #fdfbf7;
+}
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+.nav-button {
+    background: none;
+    border: none;
+    color: #fdfbf7;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.nav-button:hover {
+    opacity: 0.8;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #444; /* Biraz daha açık */
+    color: #fdfbf7;
+    padding: 8px 0;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-align: center;
+}
+.calendar-weekdays div {
+    padding: 4px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: #eee;
+    padding: 1px;
+}
+
+.calendar-day {
+    background-color: #fff;
+    min-height: 65px;
+    padding: 6px;
+    text-align: right;
+    font-size: 0.85em;
+    color: #555;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.calendar-day:hover:not(.other-month):not(.selected):not(.past-day) {
+    background-color: #f0f0f0;
+}
+.calendar-day.other-month {
+    color: #bbb;
+    cursor: default;
+    background-color: #f9f9f9;
+}
+.calendar-day.past-day {
+    color: #ccc;
+    cursor: default;
+    background-color: #f5f5f5;
+}
+.calendar-day.past-day:hover {
+    background-color: #f5f5f5;
+}
+.calendar-day.selected {
+    background-color: #fff;
+    font-weight: bold;
+    color: #333;
+}
+.calendar-day.selected::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid #d4af37; /* Altın rengi çerçeve */
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.calendar-day span {
+    position: relative;
+    z-index: 1;
+    padding: 0 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+}
+.calendar-day.today span {
+     color: #b8860b; /* Altın/Kahve tonu */
+     font-weight: bold;
+}
+
+
+/* Randevu Saatleri Stilleri (Görseldeki gibi) */
+.appointment-times-container h3 {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 350px; /* Kaydırma */
+    overflow-y: auto;
+    border-top: 1px solid #eee; /* Üstte çizgi */
+}
+
+.appointment-slot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 5px; /* Biraz daha az padding */
+    border-bottom: 1px solid #eee;
+}
+.appointment-slot:last-child {
+    border-bottom: none;
+}
+
+.appointment-slot .time-info {
+    flex-grow: 1;
+}
+.appointment-slot .time-range {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+    display: block;
+}
+/* Saat ikonu (isteğe bağlı) */
+.appointment-slot .time-range::before {
+     content: '🕒'; /* Emoji veya FontAwesome */
+     margin-right: 8px;
+     color: #777;
+     font-size: 0.9em;
+}
+.appointment-slot .availability {
+    font-size: 0.75em;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.book-button {
+    background-color: #d4af37; /* Altın/Kahve tonu */
+    color: #fff;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    margin-left: 15px;
+}
+.book-button:hover {
+    background-color: #b8860b; /* Koyu ton */
+}
+
+/* Aktif Randevular Bölümü */
+.active-appointments h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    color: #444;
+}
+#active-appointments-list {
+    /* Stil gerekirse */
+}
+.active-appointment-item {
+    background-color: #fdfbf7; /* Hafif bej */
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    position: relative; /* İptal butonu için */
+}
+.active-appointment-item p {
+    margin: 0 0 8px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+.active-appointment-item p strong {
+    color: #333;
+}
+.cancel-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c; /* Kırmızı tonu */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    line-height: 20px; /* İçeriği ortala */
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+}
+.cancel-button:hover {
+    background-color: #c0392b;
+}
+.muted-text {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) { /* Orta boy ekran altı */
+    .main-content {
+        flex-direction: column; /* Alt alta diz */
+    }
+    .appointment-flow,
+    .active-appointments {
+        flex: 1 1 100%; /* Tam genişlik kapla */
+    }
+    .active-appointments {
+         margin-top: 20px; /* Üst bölümle boşluk */
+    }
+     .calendar-day {
+         min-height: 50px; /* Mobil için daha küçük */
+     }
+     .appointment-slot { /* Saat ve buton mobilde alt alta gelebilir */
+        flex-direction: column;
+        align-items: flex-start; /* Sola yasla */
+     }
+     .book-button {
+         margin-left: 0;
+         margin-top: 10px;
+         width: 100%; /* Buton tam genişlik */
+         text-align: center;
+     }
+}
